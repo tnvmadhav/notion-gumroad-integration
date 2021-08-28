@@ -78,14 +78,16 @@ class MyIntegration:
                 v.update({
                     "Sales Count": data["sales_count"],
                     "Product": data["name"],
-                    "Link": data["short_url"]
+                    "Link": data["short_url"],
+                    "Published": data["published"]
                 })
                 return
         self.my_variables_map["NOTION_ENTRIES"].update({
                 data["id"]: {
                     "Sales Count": data["sales_count"],
                     "Product": data["name"],
-                    "Link": data["short_url"]
+                    "Link": data["short_url"],
+                    "Published": data["published"]
                     }
                 }
             )
@@ -126,6 +128,10 @@ class MyIntegration:
                 "Creator": {
                     "type": "url",
                     "url": urlparse(data["Link"]).netloc
+                },
+                "Published": {
+                    "type": "checkbox",
+                    "checkbox": data["Published"]
                 },
                 "Product": {
                     "title": [
